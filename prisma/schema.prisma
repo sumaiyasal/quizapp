@@ -19,6 +19,7 @@ model User {
   image         String?
   emailVerified DateTime?
   password      String?
+  role          Role              @default(USER)         
   accounts      Account[]
   assignedTests AssignedTest[]
   testSessions  UserTestSession[]
@@ -144,4 +145,8 @@ model UserAnswer {
   response      String // For MCQ: choice index as string; for TEXT: answer
   autoScore     Float? // For MCQ
   givenScore    Float? // For TEXT (manual evaluation)
+}
+enum Role {
+  USER
+  ADMIN
 }
