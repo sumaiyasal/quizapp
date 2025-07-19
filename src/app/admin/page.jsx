@@ -1,8 +1,9 @@
+import { currentUser } from "@/lib/auth";
 import { redirect } from "next/navigation";
-import { getCurrentUser } from "@/lib/session";
+// import { getCurrentUser } from "@/lib/session";
 
 export default async function AdminPage() {
-  const user = await getCurrentUser();
+  const user = await currentUser();
 
   if (!user || user.role !== "ADMIN") {
     redirect("/"); 
